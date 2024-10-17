@@ -336,3 +336,18 @@ public class TextLayout {
         return String(resultTemp)
     }
 }
+public enum EventType {
+    | DOWN
+    | UP
+    | MOVE
+    | NONE
+
+    public func toNum(): Int32 {
+        match (this) {
+            case DOWN => 0
+            case UP => 1
+            case MOVE => 2
+            case NONE => -1
+        }
+    }
+}
