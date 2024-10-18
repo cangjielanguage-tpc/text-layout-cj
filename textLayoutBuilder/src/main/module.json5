@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "textLayoutBuilder",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

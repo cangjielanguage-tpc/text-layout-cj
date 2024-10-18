@@ -36,6 +36,10 @@
           ]
         }
       ]
+    },
+    {
+      "name": "textLayoutBuilder",
+      "srcPath": "./textLayoutBuilder"
     }
   ]
 }
