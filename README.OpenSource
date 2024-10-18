@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "TextLayoutBuilder",
+        "License": "Apache-2.0 License",
+        "License File": " LICENSE ",
+        "Version Number": "1.5.0",
+        "Owner" : "xiafeng@huawei.com",
+        "Upstream URL": "https://github.com/facebook/TextLayoutBuilder",
+        "Description": "An Android library that allows you to build text layouts more easily."
+    }
+]
