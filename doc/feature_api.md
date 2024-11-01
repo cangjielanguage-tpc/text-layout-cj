@@ -136,17 +136,14 @@ public class TextInfo {
 
 ### 1.1 Layout Component API Description
 
+- 建议 setMinWidth、setMaxWidth 和 setWidth 不同时使用
+
 ```cangjie
 public class Layout {
     /*
      * 文本布局初始化。
      */
     public init()
-    
-    /*
-     * 创建一个空的文本布局。
-     */
-    public func creatTempLayout()
     
     /*
      * 设置按下文字状态样式。
@@ -167,18 +164,18 @@ public class Layout {
     /*
      * 设置文本布局最小宽度。
      *
-     * 参数 minWidth - 文本布局最小宽度，默认 0.0 
+     * 参数 minWidth - 文本布局最小宽度，默认 0.vp 
      * 返回值 Layout - 文本布局
      */
-    public func setMinWidth(minWidth: Float64): Layout
+    public func setMinWidth(minWidth: Length): Layout
     
     /*
      * 设置文本布局最大宽度。
      *
-     * 参数 minWidth - 文本布局最大宽度，默认 0.0 
+     * 参数 minWidth - 文本布局最大宽度，默认 0.vp 
      * 返回值 Layout - 文本布局
      */
-    public func setMaxWidth(maxWidth: Float64): Layout
+    public func setMaxWidth(maxWidth: Length): Layout
     
     /*
      * 设置文本内容。
@@ -197,7 +194,7 @@ public class Layout {
     public func setSpecialTextInfo(specialTextInfo: TextInfo): Layout
     
     /*
-     * 设置文本字体大小，默認 12。
+     * 设置文本字体大小，默认 12.0。
      *
      * 参数 size - 文本字体大小
      * 返回值 Layout - 文本布局
@@ -346,14 +343,14 @@ public class Layout {
      *
      * 返回值 Float64 - 最大行数
      */
-    public func getMinWidth(): Float64
+    public func getMinWidth(): Length
     
     /*
      * 获取文本布局最大宽度
      *
      * 返回值 Float64 - 文本布局最大宽度
      */
-    public func getMaxWidth(): Float64
+    public func getMaxWidth(): Length
     
     /*
      * 获取文本内容
@@ -384,7 +381,7 @@ public class Layout {
     public func getLinkColor(): UInt32
     
     /*
-     * 获取文本按下是颜色
+     * 获取文本按下时颜色
      *
      * 返回值 UInt32 - 颜色
      */
@@ -482,19 +479,10 @@ public class Layout {
 ### 1.1 TextLayout Component API Description
 
 ```cangjie
-public enum EventType {
-    | DOWN
-    | UP
-    | MOVE
-    | NONE
-}
-
 @Component
 public class TextLayout {
     @State
     var model: Layout = Layout()
-    @State
-    var eventType: EventType = NONE
 }
 ```
 ## 4 示例
@@ -650,51 +638,51 @@ class EntryView {
 
         this.data1.setText(this.strTest).setTypeface("sans-serif")
 
-        let tempData2: Layout = this.data2.creatTempLayout()
+        let tempData2: Layout = this.data2
         tempData2.setText(this.strTest).setTextColor(0x800080).setSingleLine(true)
         this.data2 = tempData2
 
-        let tempData3: Layout = this.data3.creatTempLayout()
+        let tempData3: Layout = this.data3
         tempData3.setText(this.strTest).setSingleLine(false).setMaxLines(2).setEllipsize(TextOverflow.Ellipsis).
             setIncludeFontPadding(true)
         this.data3 = tempData3
 
-        let tempData4: Layout = this.data4.creatTempLayout()
+        let tempData4: Layout = this.data4
         tempData4.setText(this.strTest).setMaxLines(3).setEllipsize(TextOverflow.Ellipsis).setIncludeFontPadding(true).
             setLinkColor(0Xff0000).setLetterSpacing(6.0)
         this.data4 = tempData4
 
-        let tempData5: Layout = this.data5.creatTempLayout()
+        let tempData5: Layout = this.data5
         tempData5.setText(this.strTest).setIncludeFontPadding(true).setTextDirection(1)
         this.data5 = tempData5
 
-        let tempData6: Layout = this.data6.creatTempLayout()
+        let tempData6: Layout = this.data6
         tempData6.setText(this.strTest).setIncludeFontPadding(true).setAlignment(TextAlign.End)
         this.data6 = tempData6
 
-        let tempData7: Layout = this.data7.creatTempLayout()
-        tempData7.setText(this.strTest).setMaxWidth(200.0).setIncludeFontPadding(true)
+        let tempData7: Layout = this.data7
+        tempData7.setText(this.strTest).setMaxWidth(200.vp).setIncludeFontPadding(true)
         this.data7 = tempData7
 
-        let tempData8: Layout = this.data8.creatTempLayout()
+        let tempData8: Layout = this.data8
         tempData8.setText(this.strTest).setIncludeFontPadding(true).setIsEnablePressState(true).setTextPressStateStyle(
             0x999999)
         this.data8 = tempData8
 
-        let tempData9: Layout = this.data9.creatTempLayout()
+        let tempData9: Layout = this.data9
         tempData9.setText(this.strTest).setSpecialTextInfo(textInfo1)
         this.data9 = tempData9
 
-        let tempData10: Layout = this.data10.creatTempLayout()
+        let tempData10: Layout = this.data10
         tempData10.setText(this.strTest).setSpecialTextInfo(textInfo1).setSpecialTextInfo(textInfo2).setSpecialTextInfo(
             textInfo3)
         this.data10 = tempData10
 
-        let tempData11: Layout = this.data11.creatTempLayout()
+        let tempData11: Layout = this.data11
         tempData11.setText("              ").setBgColor(Color(0xff0000)).setIncludeFontPadding(true)
         this.data11 = tempData11
 
-        let tempData12: Layout = this.data12.creatTempLayout()
+        let tempData12: Layout = this.data12
         tempData12.setText(this.strTest).setSpecialTextInfo(textInfo1).setSpecialTextInfo(textInfo2).setSpecialTextInfo(
             textInfo3).setSpecialTextClick(
             {
@@ -702,17 +690,17 @@ class EntryView {
         })
         this.data12 = tempData12
 
-        let tempData13: Layout = this.data13.creatTempLayout()
+        let tempData13: Layout = this.data13
         tempData13.setText(
             "一二三四五六七八九十你我他你我他你我他你我他你我他你我他你我他你我他你我"
         ).setIncludeFontPadding(true).setMaxEms(5)
         this.data13 = tempData13
 
-        let tempData14: Layout = this.data14.creatTempLayout()
+        let tempData14: Layout = this.data14
         tempData14.setText("一二三").setIncludeFontPadding(true).setBgColor(Color(0xff0000)).setMinEms(5)
         this.data14 = tempData14
 
-        let tempData15: Layout = this.data15.creatTempLayout()
+        let tempData15: Layout = this.data15
         tempData15.setText(
             "一二三四五六七八九十你我他你我他你我他你我他你我他你我他你我他你我他你我"
         ).setIndents(20.0, 0.0)

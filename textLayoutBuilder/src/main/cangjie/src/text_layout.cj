@@ -16,8 +16,8 @@ public class Layout {
     var textColor: UInt32 = 0x000000
     var bgColor: Color = Color(255, 255, 255, alpha: 0.0)
     var width: ?Length = Option<Length>.None
-    var minWidth: Float64 = 0.0
-    var maxWidth: Float64 = 0.0
+    var minWidth: Length = 0.vp
+    var maxWidth: Length = 0.vp
     var size: Float64 = 12.0
     var linkColor: UInt32 = 0x0037ff
     var isEnablePressState: Bool = false
@@ -44,45 +44,31 @@ public class Layout {
         this.specialTextInfoArray = ArrayList<TextInfo>()
     }
 
-    public func creatTempLayout() {
-        let tempLayout: Layout = Layout()
-        return tempLayout
-    }
-
     public func setSpecialTextClick(clickCallback: (textInfo: TextInfo) -> Unit): Layout {
         this.clickCallback = clickCallback
         return this
     }
 
     public func setWidth(width: Length): Layout {
-        if (let Some(wid) <- this.width) {
-            if (wid.value != width.value) {
-                this.width = width
-            }
-        }
-
+        this.width = width
         return this
     }
 
-    public func setMinWidth(minWidth: Float64): Layout {
-        if (this.minWidth != minWidth) {
-            this.minWidth = minWidth
-        }
+    public func setMinWidth(minWidth: Length): Layout {
+        this.minWidth = minWidth
         return this
     }
 
-    public func getMinWidth(): Float64 {
+    public func getMinWidth(): Length {
         return this.minWidth
     }
 
-    public func setMaxWidth(maxWidth: Float64): Layout {
-        if (this.maxWidth != maxWidth) {
-            this.maxWidth = maxWidth
-        }
+    public func setMaxWidth(maxWidth: Length): Layout {
+        this.maxWidth = maxWidth
         return this
     }
 
-    public func getMaxWidth(): Float64 {
+    public func getMaxWidth(): Length {
         return this.maxWidth
     }
 
