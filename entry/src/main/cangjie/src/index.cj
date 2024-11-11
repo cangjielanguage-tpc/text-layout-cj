@@ -154,51 +154,51 @@ class EntryView {
 
         this.data1.setText(this.strTest).setTypeface("sans-serif")
 
-        let tempData2: Layout = this.data2.creatTempLayout()
+        let tempData2: Layout = this.data2
         tempData2.setText(this.strTest).setTextColor(0x800080).setSingleLine(true)
         this.data2 = tempData2
 
-        let tempData3: Layout = this.data3.creatTempLayout()
+        let tempData3: Layout = this.data3
         tempData3.setText(this.strTest).setSingleLine(false).setMaxLines(2).setEllipsize(TextOverflow.Ellipsis).
             setIncludeFontPadding(true)
         this.data3 = tempData3
 
-        let tempData4: Layout = this.data4.creatTempLayout()
+        let tempData4: Layout = this.data4
         tempData4.setText(this.strTest).setMaxLines(3).setEllipsize(TextOverflow.Ellipsis).setIncludeFontPadding(true).
             setLinkColor(0Xff0000).setLetterSpacing(6.0)
         this.data4 = tempData4
 
-        let tempData5: Layout = this.data5.creatTempLayout()
+        let tempData5: Layout = this.data5
         tempData5.setText(this.strTest).setIncludeFontPadding(true).setTextDirection(1)
         this.data5 = tempData5
 
-        let tempData6: Layout = this.data6.creatTempLayout()
+        let tempData6: Layout = this.data6
         tempData6.setText(this.strTest).setIncludeFontPadding(true).setAlignment(TextAlign.End)
         this.data6 = tempData6
 
-        let tempData7: Layout = this.data7.creatTempLayout()
-        tempData7.setText(this.strTest).setMaxWidth(200.0).setIncludeFontPadding(true)
+        let tempData7: Layout = this.data7
+        tempData7.setText(this.strTest).setMaxWidth(200.vp).setIncludeFontPadding(true)
         this.data7 = tempData7
 
-        let tempData8: Layout = this.data8.creatTempLayout()
+        let tempData8: Layout = this.data8
         tempData8.setText(this.strTest).setIncludeFontPadding(true).setIsEnablePressState(true).setTextPressStateStyle(
             0x999999)
         this.data8 = tempData8
 
-        let tempData9: Layout = this.data9.creatTempLayout()
+        let tempData9: Layout = this.data9
         tempData9.setText(this.strTest).setSpecialTextInfo(textInfo1)
         this.data9 = tempData9
 
-        let tempData10: Layout = this.data10.creatTempLayout()
+        let tempData10: Layout = this.data10
         tempData10.setText(this.strTest).setSpecialTextInfo(textInfo1).setSpecialTextInfo(textInfo2).setSpecialTextInfo(
             textInfo3)
         this.data10 = tempData10
 
-        let tempData11: Layout = this.data11.creatTempLayout()
+        let tempData11: Layout = this.data11
         tempData11.setText("              ").setBgColor(Color(0xff0000)).setIncludeFontPadding(true)
         this.data11 = tempData11
 
-        let tempData12: Layout = this.data12.creatTempLayout()
+        let tempData12: Layout = this.data12
         tempData12.setText(this.strTest).setSpecialTextInfo(textInfo1).setSpecialTextInfo(textInfo2).setSpecialTextInfo(
             textInfo3).setSpecialTextClick(
             {
@@ -206,17 +206,17 @@ class EntryView {
         })
         this.data12 = tempData12
 
-        let tempData13: Layout = this.data13.creatTempLayout()
+        let tempData13: Layout = this.data13
         tempData13.setText(
             "一二三四五六七八九十你我他你我他你我他你我他你我他你我他你我他你我他你我"
         ).setIncludeFontPadding(true).setMaxEms(5)
         this.data13 = tempData13
 
-        let tempData14: Layout = this.data14.creatTempLayout()
+        let tempData14: Layout = this.data14
         tempData14.setText("一二三").setIncludeFontPadding(true).setBgColor(Color(0xff0000)).setMinEms(5)
         this.data14 = tempData14
 
-        let tempData15: Layout = this.data15.creatTempLayout()
+        let tempData15: Layout = this.data15
         tempData15.setText(
             "一二三四五六七八九十你我他你我他你我他你我他你我他你我他你我他你我他你我"
         ).setIndents(20.0, 0.0)

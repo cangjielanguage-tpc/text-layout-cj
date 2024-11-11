@@ -5,7 +5,7 @@
 <p align="center">
 <img alt="" src="https://img.shields.io/badge/release-v0.0.1-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.53.5-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v0.53.13-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjcov-NA-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
@@ -155,7 +155,7 @@ class EntryView {
         textInfo3.setFontColor(0xffff00)
         textInfo3.setFontLetterSpacing(10)
         
-        let tempData: Layout = this.data.creatTempLayout()
+        let tempData: Layout = this.data
         tempData.setText(this.strTest)  //设置文本
         .setSpecialTextInfo(textInfo1)  // 设置自定义文本样式
         .setSpecialTextInfo(textInfo2)
@@ -176,8 +176,8 @@ class EntryView {
 
 在下述版本验证通过：
 
-    DevEco Studio NEXT Developer Beta2(5.0.3.900) 
-    Cangjie Support Plugin 5.0.3.900
+    DevEco Studio NEXT Developer Beta2(5.0.3.910) 
+    Cangjie Support Plugin 5.0.3.906
 
 ## 开源协议
 

@@ -67,14 +67,14 @@ public class TextLayout {
                 )
             }.fontFamily(this.model.typeface).borderRadius(10).textAlign(this.model.textalign).padding(
                 left: if (this.model.shouldInclude) {
-                    14.0
-                } else {
                     this.model.leftIndents
+                } else {
+                    14.0
                 },
                 right: if (this.model.shouldInclude) {
-                    14.0
-                } else {
                     this.model.rightIndents
+                } else {
+                    14.0
                 },
                 top: if (this.model.shouldInclude) {
                     14.0
@@ -144,10 +144,10 @@ public class TextLayout {
      */
     private func getMinWidthEms(): Float64 {
         if (this.model.minEms == 0) {
-            if (this.model.minWidth == 0.0) {
+            if (this.model.minWidth.value == 0.0) {
                 return (0.0)
             } else {
-                return this.model.minWidth
+                return this.model.minWidth.value
             }
         } else {
             let temp = if (this.model.shouldInclude) {
@@ -170,10 +170,10 @@ public class TextLayout {
      */
     private func getMaxWidthEms(): Float64 {
         if (this.model.maxEms == 0) {
-            if (this.model.maxWidth == 0.0) {
+            if (this.model.maxWidth.value == 0.0) {
                 return (Float64.Inf)
             } else {
-                return this.model.maxWidth
+                return this.model.maxWidth.value
             }
         } else {
             let temp = if (this.model.shouldInclude) {
