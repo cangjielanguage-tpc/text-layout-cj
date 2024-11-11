@@ -2,7 +2,7 @@
 
 ## 介绍
 
-textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，textLayoutBuilder 极大的方便了开发者的开发效率。
+textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，textLayoutBuilder4cj 极大的提升了开发效率。
 
 ## 1 富文本数据实体
 
@@ -10,6 +10,10 @@ textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包�
 
 ```cangjie
 public class TextInfo {
+    /*
+     * 富文本数据实体初始化。
+     */
+    public init()
     /*
      * 设置特殊文字开始位置，默认 0。
      * 
@@ -67,7 +71,7 @@ public class TextInfo {
     public func setFontLetterSpacing(fontLetterSpacing: Int64): Unit
     
     /*
-     * 设置字体样式,默认 FontStyle.Normal。
+     * 设置字体样式，默认 FontStyle.Normal。
      * 
      * 参数 fontStyle - 字体样式
      * 返回值 Unit
@@ -91,14 +95,14 @@ public class TextInfo {
     /*
      * 获取文字内容。
      *
-     * 返回值 Int64 - 文字内容
+     * 返回值 String - 文字内容
      */
     public func getText(): String
     
     /*
      * 获取文字类型。
      *
-     * 返回值 Int64 - 文字类型
+     * 返回值 String - 文字类型
      */
     public func getTextType(): String
     
@@ -112,7 +116,7 @@ public class TextInfo {
     /*
      * 获取文字颜色。
      *
-     * 返回值 Int64 - 文字颜色
+     * 返回值 UInt32 - 文字颜色
      */
     public func getFontColor(): UInt32
     
@@ -126,7 +130,7 @@ public class TextInfo {
     /*
      * 获取字体样式。
      *
-     * 返回值 Int64 - 字体样式
+     * 返回值 FontStyle - 字体样式
      */
     public func getFontStyle(): FontStyle
 }
@@ -146,7 +150,7 @@ public class Layout {
     public init()
     
     /*
-     * 设置按下文字状态样式。
+     * 设置按下文字时的状态样式。
      *
      * 参数 clickCallback - 用户自定义回调函数
      * 返回值 Layout - 文本布局
@@ -172,7 +176,7 @@ public class Layout {
     /*
      * 设置文本布局最大宽度。
      *
-     * 参数 minWidth - 文本布局最大宽度，默认 0.vp 
+     * 参数 maxWidth - 文本布局最大宽度，默认 0.vp 
      * 返回值 Layout - 文本布局
      */
     public func setMaxWidth(maxWidth: Length): Layout
@@ -204,7 +208,7 @@ public class Layout {
     /*
      * 设置文本字体颜色。
      *
-     * 参数 size - 文本字体颜色，默认 0x000000。
+     * 参数 textColor - 文本字体颜色，默认 0x000000。
      * 返回值 Layout - 文本布局
      */
     public func setTextColor(textColor: UInt32): Layout
@@ -226,7 +230,7 @@ public class Layout {
     public func setLinkColor(linkColor: UInt32): Layout
     
     /*
-     * 设置是否开启按下文字时状态变化开关。
+     * 是否设置组件按下时颜色变化。
      *
      * 参数 isEnablePressState - 默认 false。
      * 返回值 Layout - 文本布局
@@ -234,9 +238,9 @@ public class Layout {
     public func setIsEnablePressState(isEnablePressState: Bool): Layout
     
     /*
-     * 设置按下文字状态时颜色样式。
+     * 设置按下时组件颜色。
      *
-     * 参数 textPressStateStyle - 按下文字状态样式,默认 0x999999。
+     * 参数 textPressStateStyle - 按下文字状态样式，默认 0x999999。
      * 返回值 Layout - 文本布局
      */
     public func setTextPressStateStyle(textPressStateStyle: UInt32): Layout
@@ -252,7 +256,7 @@ public class Layout {
     /*
      * 设置每行最小显示字数。
      *
-     * 参数 minEms - 最小显示字数，默认 0.0。
+     * 参数 minEms - 最小显示字数，默认 0.0，负数取绝对值。
      * 返回值 Layout - 文本布局
      */
     public func setMinEms(minEms: Int64): Layout
@@ -260,7 +264,7 @@ public class Layout {
     /*
      * 设置每行最大显示字数。
      *
-     * 参数 minEms - 最大显示字数，默认 0.0 字符占据文本布局宽度。
+     * 参数 maxEms - 最大显示字数，默认 0.0 字符占据文本布局宽度，负数取绝对值。
      * 返回值 Layout - 文本布局
      */
     public func setMaxEms(maxEms: Int64): Layout
@@ -293,7 +297,7 @@ public class Layout {
     /*
      * 设置文字排列方向。
      *
-     * 参数 textDirection - 0 默认正常排列自左向右，1 反向排列。
+     * 参数 textDirection - 1 反向排列，其他值正向排列。
      * 返回值 Layout - 文本布局
      */
     public func setTextDirection(textDirection: Int32): Layout
@@ -315,7 +319,7 @@ public class Layout {
     public func setTypeface(typeface: String): Layout
     
     /*
-     * 设置文本显示不下时的省略号替代方式。
+     * 设置文本显示不下时的省略号替代方式，需要和 setMaxLines 组合生效。
      *
      * 参数 ellipsize - 默认 TextOverflow.None。
      * 返回值 Layout - 文本布局
@@ -333,22 +337,22 @@ public class Layout {
     /*
      * 设置最大行数。
      *
-     * 参数 maxLines - 默认 0,显示最大行数。
+     * 参数 maxLines - 默认 0，显示最大行数。
      * 返回值 Layout - 文本布局
      */
     public func setMaxLines(maxLines: Int32): Layout
     
     /*
-     * 获取最大行数。
+     * 获取文本布局最小宽度。
      *
-     * 返回值 Float64 - 最大行数
+     * 返回值 Length - 最小宽度
      */
     public func getMinWidth(): Length
     
     /*
      * 获取文本布局最大宽度
      *
-     * 返回值 Float64 - 文本布局最大宽度
+     * 返回值 Length - 文本布局最大宽度
      */
     public func getMaxWidth(): Length
     
@@ -362,21 +366,21 @@ public class Layout {
     /*
      * 获取文本内容字体大小
      *
-     * 返回值 Float64 - 字体大小
+     * 返回值 Float64 - 文本内容字体大小
      */
     public func getTextSize(): Float64
     
     /*
-     * 获取文本内容颜色
+     * 获取文本内容字体颜色。
      *
-     * 返回值 UInt32 - 文本内容颜色
+     * 返回值 UInt32 - 文本内容字体颜色
      */
     public func getTextColor(): UInt32
     
     /*
-     * 获取链接颜色
+     * 获取链接字体颜色。
      *
-     * 返回值 UInt32 - 链接颜色
+     * 返回值 UInt32 - 链接字体颜色
      */
     public func getLinkColor(): UInt32
     
@@ -388,84 +392,84 @@ public class Layout {
     public func getTextPressStateStyle(): UInt32
     
     /*
-     * 获取文字间距
+     * 获取文字间距。
      *
      * 返回值 Float64 - 文字间距
      */
     public func getLetterSpacing(): Float64
     
     /*
-     * 获取每行最小显示字数
+     * 获取每行最小显示字数。
      *
      * 返回值 Int64 - 最小显示字数
      */
     public func getMinEms(): Int64
     
     /*
-     * 获取每行最大显示字数
+     * 获取每行最大显示字数。
      *
      * 返回值 Int64 - 最大显示字数
      */
     public func getMaxEms(): Int64
     
     /*
-     * 获取组件是否设置内边距
+     * 获取组件是否设置内边距。
      *
      * 返回值 Bool - 是否设置内边距
      */
     public func getIncludeFontPadding(): Bool
     
     /*
-     * 获取文本对齐方式
+     * 获取文本对齐方式。
      *
      * 返回值 TextAlign - 文本对齐方式
      */
     public func getAlignment(): TextAlign
     
     /*
-     * 获取左内边距
+     * 获取左内边距。
      *
      * 返回值 Float64 - 左内边距
      */
     public func getLeftIndents(): Float64
     
     /*
-     * 获取右边距
+     * 获取右内边距。
      *
-     * 返回值 Float64 - 右边距
+     * 返回值 Float64 - 右内边距
      */
     public func getRightIndents(): Float64
     
     /*
-     * 获取文字排列方向
+     * 获取文字排列方向。
      *
      * 返回值 Int32 - 文字排列方向（0/1）
      */
     public func getTextDirection(): Int32
     
     /*
-     * 获取字体
+     * 获取字体。
      *
      * 返回值 String - 字体
      */
     public func getTypeface(): String
     
     /*
-     * 设置文本显示不下时的省略号替代方式
+     * 获取文本显示不下时的省略号替代方式。
      *
      * 返回值 TextOverflow - 文本显示不下时的省略号替代方式
      */
     public func getEllipsize(): TextOverflow
     
     /*
-     * 获取是否单行显示
+     * 获取是否单行显示。
      *
      * 返回值 Bool - 是否单行显示
      */
     public func getSingleLine(): Bool
     
     /*
-     * 获取最大行数
+     * 获取最大行数。
      *
      * 返回值 Int32 - 最大行数
      */
@@ -498,13 +502,13 @@ import ohos.state_manage.*
 import ohos.state_macro_manage.*
 import ohos.component.Scroller
 import ohos.component.Scroll
-import textLayoutBuilder.*
+import textlayoutbuilder.*
 
 @Entry
 @Component
 class EntryView {
     var scroller: Scroller = Scroller()
-    private var strTest = "我想问，123456，你知道是如何生成的吗？https://fanyi.youdao.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://fanyi.youdao.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
+    private var strTest = "我想问，123456，你知道是如何生成的吗？https://xxxxx.xxxxxx.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://xxxxx.xxxxxx.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
     var data1: Layout = Layout()
     var data2: Layout = Layout()
     var data3: Layout = Layout()

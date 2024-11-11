@@ -1,7 +1,7 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights resvered.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package textLayoutBuilder
+package textlayoutbuilder
 
 import ohos.component.*
 import ohos.base.*
@@ -92,8 +92,8 @@ public class Layout {
     }
 
     public func setTextSize(size: Float64): Layout {
-        if (this.size != size) {
-            this.size = size
+        if (size < 0.0) {
+            this.size = 12.0
         }
         return this
     }
@@ -131,17 +131,6 @@ public class Layout {
         return this.linkColor
     }
 
-    public func setTextSpacingExtra(spacingExtra: Int32): Layout {
-        if (this.spacingExtra != spacingExtra) {
-            this.spacingExtra = spacingExtra
-        }
-        return this
-    }
-
-    public func getTextSpacingExtra(): Int32 {
-        return this.spacingExtra
-    }
-
     public func setIsEnablePressState(isEnablePressState: Bool): Layout {
         if (this.isEnablePressState != isEnablePressState) {
             this.isEnablePressState = isEnablePressState
@@ -172,9 +161,12 @@ public class Layout {
     }
 
     public func setLetterSpacing(letterSpacing: Float64): Layout {
-        if (this.letterSpacing != letterSpacing) {
-            this.letterSpacing = letterSpacing
-        }
+       if(letterSpacing < 0.0) {
+            this.letterSpacing = 0.0
+       } else {
+           this.letterSpacing = letterSpacing
+       }
+
         return this
     }
 
@@ -183,9 +175,7 @@ public class Layout {
     }
 
     public func setMinEms(minEms: Int64): Layout {
-        if (this.minEms != minEms) {
-            this.minEms = minEms
-        }
+        this.minEms = abs(minEms)
         return this
     }
 
@@ -194,9 +184,7 @@ public class Layout {
     }
 
     public func setMaxEms(maxEms: Int64): Layout {
-        if (this.maxEms != maxEms) {
-            this.maxEms = maxEms
-        }
+        this.maxEms = abs(maxEms)
         return this
     }
 
@@ -226,10 +214,14 @@ public class Layout {
     }
 
     public func setIndents(leftIndents: Float64, rightIndents: Float64): Layout {
-        if (this.leftIndents != leftIndents) {
+        if (leftIndents < 0.0) {
+            this.leftIndents = 0.0
+        } else {
             this.leftIndents = leftIndents
         }
-        if (this.rightIndents != rightIndents) {
+        if (rightIndents < 0.0) {
+            this.rightIndents = 0.0
+        } else {
             this.rightIndents = rightIndents
         }
         return this
@@ -244,7 +236,10 @@ public class Layout {
     }
 
     public func setTextDirection(textDirection: Int32): Layout {
-        this.textDirection = textDirection
+        match (textDirection) {
+        	case 1 => this.textDirection = 1
+            case _ => this.textDirection = 0
+        }
         return this
     }
 
@@ -291,7 +286,9 @@ public class Layout {
     }
 
     public func setMaxLines(maxLines: Int32): Layout {
-        if (this.maxLines != maxLines) {
+        if (this.maxLines < 0) {
+            this.maxLines = 0
+        } else {
             this.maxLines = maxLines
         }
         return this

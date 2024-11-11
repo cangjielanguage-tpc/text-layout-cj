@@ -12,7 +12,7 @@
 
 ## 介绍
 
-textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，textLayoutBuilder 极大的方便了开发者的开发效率。
+textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，textLayoutBuilder4cj 极大的提升了开发效率。
 
 <p align="left">
 <img src="./doc/assets/textLayout1.png"  width="20%">
@@ -53,8 +53,8 @@ textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包�
 
 1. 通过 module 引入
     1. 克隆下载项目
-    2. 将 textLayoutBuilder4cj 模块拷贝到应用项目下
-    3. 修改自身应用 entry 下的 oh-package.json5 文件，在 dependencies 字段添加 "textLayoutBuilder": "file:../textLayoutBuilder"
+    2. 将 textLayoutBuilder4cj 的模块 textlayoutbuilder 拷贝到应用项目下
+    3. 修改自身应用 entry 下的 oh-package.json5 文件，在 dependencies 字段添加 "textlayoutbuilder": "file:../textlayoutbuilder"
       ```json
       {
          "name": "entry",
@@ -64,18 +64,18 @@ textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包�
          "author": "",
          "license": "",
         "dependencies": {
-            "markdown": "file:../textLayoutBuilder"
+            "markdown": "file:../textlayoutbuilder"
         }
       }
       ```
-    4. 修改自身应用 entry/src/main/cangjie 下的 cjpm.toml 文件，在 [dependencies] 字段下添加 textLayoutBuilder = {path = "../../../../textLayoutBuilder/src/main/cangjie", version = "1.0.0"}
+    4. 修改自身应用 entry/src/main/cangjie 下的 cjpm.toml 文件，在 [dependencies] 字段下添加 textlayoutbuilder = {path = "../../../../textlayoutbuilder/src/main/cangjie", version = "1.0.0"}
        ```toml
        [dependencies]
-           textLayoutBuilder = {path = "../../../../textLayoutBuilder/src/main/cangjie", version = "1.0.0"}
+           textlayoutbuilder = {path = "../../../../textlayoutbuilder/src/main/cangjie", version = "1.0.0"}
        ```
-    5. 在项目中使用 import textLayoutBuilder.* 引用 textLayoutBuilder 项目
+    5. 在项目中使用 import textlayoutbuilder.* 引用 textlayoutbuilder 项目
        ```cangjie
-       import textLayoutBuilder.*
+       import textlayoutbuilder.*
        ```
 2. 把 textLayoutBuilder4cj 作为三方库依赖引入
     1. 目标工程把 textLayoutBuilder4cj 依赖库作为 git submodule 引入
@@ -89,11 +89,11 @@ textLayoutBuilder4cj 是一个可定制任意样式的文本构建工具，包�
     2. 修改自身应用 entry/src/main/cangjie 下的 cjpm.toml 文件，添加依赖
     ```toml
     [dependencies]
-        textLayoutBuilder = {path = "../../../../third-party/textLayoutBuilder4cj/textLayoutBuilder/src/main/cangjie", version = "1.0.0"}
+        textlayoutbuilder = {path = "../../../../third-party/textLayoutBuilder4cj/textlayoutbuilder/src/main/cangjie", version = "1.0.0"}
      ```
-    3. 在项目中使用 textLayoutBuilder 组件
+    3. 在项目中使用 textlayoutbuilder 组件
        ```cangjie
-       import textLayoutBuilder.*
+       import textlayoutbuilder.*
        ```
 
 ## 功能示例
@@ -111,13 +111,13 @@ import ohos.state_manage.*
 import ohos.state_macro_manage.*
 import ohos.component.Scroller
 import ohos.component.Scroll
-import textLayoutBuilder.* // 导入 textLayoutBuilder 组件
+import textlayoutbuilder.* // 导入 textlayoutbuilder 组件
 
 @Entry
 @Component
 class EntryView {
     var scroller: Scroller = Scroller()
-    private var strTest = "我想问，123456，你知道是如何生成的吗？https://fanyi.youdao.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://fanyi.youdao.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
+    private var strTest = "我想问，123456，你知道是如何生成的吗？https://xxxxx.xxxxxx.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://xxxxx.xxxxxx.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
     var data: Layout = Layout()
 
     func build() {

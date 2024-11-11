@@ -17,8 +17,8 @@
   [dependencies.cj_res_entry]
     path = "./cj_res"
     version = "1.0.0"
-  [dependencies.textLayoutBuilder]
-    path = "../../../../textLayoutBuilder/src/main/cangjie"
+  [dependencies.textlayoutbuilder]
+    path = "../../../../textlayoutbuilder/src/main/cangjie"
     version = "1.0.0"
 
 [package]
