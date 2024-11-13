@@ -1,7 +1,7 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights resvered.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package textLayoutBuilder
+package textlayoutbuilder
 
 import ohos.base.*
 import ohos.component.*
@@ -10,6 +10,7 @@ import ohos.state_macro_manage.*
 import std.regex.*
 import std.collection.{ArrayList}
 import std.math.*
+import ohos.hilog.Hilog
 
 let TEXT_TYPE_NORMAL: String = "normal"
 let TEXT_TYPE_RICH: String = "richtext"
@@ -151,9 +152,9 @@ public class TextLayout {
             }
         } else {
             let temp = if (this.model.shouldInclude) {
-                28.0
-            } else {
                 this.model.leftIndents + this.model.rightIndents
+            } else {
+                28.0
             }
             let fontSize: Float64 = if (let Some(size) <- (px2vp(fp2px(this.model.size.fp) ?? this.model.size.fp))) {
                 size.value
@@ -177,9 +178,9 @@ public class TextLayout {
             }
         } else {
             let temp = if (this.model.shouldInclude) {
-                28.0
-            } else {
                 this.model.leftIndents + this.model.rightIndents
+            } else {
+                28.0
             }
 
             let fontSize: Float64 = if (let Some(size) <- (px2vp(fp2px(this.model.size.fp) ?? this.model.size.fp))) {
@@ -242,9 +243,13 @@ public class TextLayout {
             var endTemp: Int64 = 0
             for (i in 0..this.model.specialTextInfoArray.size) {
                 let textRichText: TextInfo = this.model.specialTextInfoArray[i]
-                let start: Int64 = textRichText.start // 特殊处理开始位置
-                let end: Int64 = textRichText.end // 特殊处理结束位置
-
+                var start: Int64 = textRichText.start // 特殊处理开始位置
+                var end: Int64 = textRichText.end // 特殊处理结束位置
+                if(start > end) {
+                    start = 0
+                    end = 0
+                    Hilog.error(0x000000, "Numerical anomaly", "The starting position cannot be greater than the ending position")
+                }
                 let first: Array<Rune> = strTemp[0..(start - endTemp)]
                 let second: Array<Rune> = strTemp[(start - endTemp)..(end - endTemp)]
                 strTemp = strTemp[(end - endTemp)..strTemp.size]

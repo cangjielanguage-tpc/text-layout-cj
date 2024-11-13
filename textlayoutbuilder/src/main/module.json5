@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "textLayoutBuilder",
+    "name": "textlayoutbuilder",
     "type": "har",
     "deviceTypes": [
       "default"

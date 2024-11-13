@@ -1,7 +1,7 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights resvered.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package textLayoutBuilder
+package textlayoutbuilder
 
 import ohos.component.*
 
@@ -16,7 +16,11 @@ public class TextInfo {
     var fontStyle: FontStyle = FontStyle.Normal
 
     public func setStart(start: Int64): Unit {
-        this.start = start
+        if(start < 0) {
+            this.start = 0
+        } else {
+            this.start = start
+        }
     }
 
     public func getStart(): Int64 {
@@ -24,7 +28,12 @@ public class TextInfo {
     }
 
     public func setEnd(end: Int64): Unit {
-        this.end = end
+        if(end < 0) {
+            this.end = 0
+        } else {
+            this.end = end
+        }
+
     }
 
     public func getEnd(): Int64 {
@@ -64,7 +73,12 @@ public class TextInfo {
     }
 
     public func setFontLetterSpacing(fontLetterSpacing: Int64): Unit {
-        this.fontLetterSpacing = fontLetterSpacing
+        if(fontLetterSpacing < 0) {
+            this.fontLetterSpacing = 0
+        } else {
+            this.fontLetterSpacing = fontLetterSpacing
+        }
+
     }
 
     public func getFontLetterSpacing(): Int64 {

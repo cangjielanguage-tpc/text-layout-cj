@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights resvered.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
 
 package ohos_app_cangjie_entry
@@ -14,13 +14,13 @@ import ohos.state_manage.*
 import ohos.state_macro_manage.*
 import ohos.component.Scroller
 import ohos.component.Scroll
-import textLayoutBuilder.*
+import textlayoutbuilder.*
 
 @Entry
 @Component
 class EntryView {
     var scroller: Scroller = Scroller()
-    private var strTest = "我想问，123456，你知道是如何生成的吗？https://fanyi.youdao.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://fanyi.youdao.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
+    private var strTest = "我想问，123456，你知道是如何生成的吗？https://xxxxx.xxxxxx.com/这是有道翻译的链接，如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿，https://xxxxx.xxxxxx.com/程序的架构你还拿不，大禹的板子屏幕很大，凑个字数。如何你告诉我答案全部正确的话我将录用你为有道翻译的小小程序猿."
     var data1: Layout = Layout()
     var data2: Layout = Layout()
     var data3: Layout = Layout()

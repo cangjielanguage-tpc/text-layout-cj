@@ -38,8 +38,8 @@
       ]
     },
     {
-      "name": "textLayoutBuilder",
-      "srcPath": "./textLayoutBuilder"
+      "name": "textlayoutbuilder",
+      "srcPath": "./textlayoutbuilder"
     }
   ]
 }
