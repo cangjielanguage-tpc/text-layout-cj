@@ -31,22 +31,6 @@ public class TextInfo {
     public func setEnd(end: Int64): Unit
     
     /*
-     * 设置文字内容，默认空。
-     * 
-     * 参数 text - 文本内容
-     * 返回值 Unit
-     */
-    public func setText(text: String): Unit
-    
-    /*
-     * 设置文字类型，默认 TEXT_TYPE_NORMAL。
-     * 
-     * 参数 textType - 文本类型 TEXT_TYPE_NORMAL | TEXT_TYPE_RICH | TEXT_TYPE_HTTP）
-     * 返回值 Unit
-     */
-    public func setTextType(textType: String): Unit
-    
-    /*
      * 设置字体大小，默认 12。
      * 
      * 参数 fontSize - 字体大小
@@ -256,7 +240,7 @@ public class Layout {
     /*
      * 设置每行最小显示字数。
      *
-     * 参数 minEms - 最小显示字数，默认 0.0，负数取绝对值。
+     * 参数 minEms - 最小显示字数，默认 0，负数取绝对值。
      * 返回值 Layout - 文本布局
      */
     public func setMinEms(minEms: Int64): Layout
@@ -264,7 +248,7 @@ public class Layout {
     /*
      * 设置每行最大显示字数。
      *
-     * 参数 maxEms - 最大显示字数，默认 0.0 字符占据文本布局宽度，负数取绝对值。
+     * 参数 maxEms - 最大显示字数，默认 0 字符占据文本布局宽度，负数取绝对值。
      * 返回值 Layout - 文本布局
      */
     public func setMaxEms(maxEms: Int64): Layout
@@ -313,7 +297,7 @@ public class Layout {
     /*
      * 设置字体。
      *
-     * 参数 typeface - 默认 Arial。
+     * 参数 typeface - 默认 Arial，范围参考 cangjieUI API 文本通用的 fontFamily 函数。
      * 返回值 Layout - 文本布局
      */
     public func setTypeface(typeface: String): Layout
