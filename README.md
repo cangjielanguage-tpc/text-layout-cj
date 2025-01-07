@@ -1,5 +1,5 @@
 <div align="center">
-<h1>textLayoutBuilder4cj</h1>
+<h1>text-layout-cj</h1>
 </div>
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 ## 介绍
 
-textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，textLayoutBuilder4cj 极大的提升了开发效率。
+text-layout-cj 是一个可定制多种样式的文本构建工具，包括字体间距、大小、颜色、布局方式、富文本高亮显示等，在文字显示的业务场景中都会使用到，特别是通知类特殊显示的字体样式时，text-layout-cj 极大的提升了开发效率。
 
 <p align="left">
 <img src="./doc/assets/textLayout1.png"  width="20%">
@@ -33,7 +33,7 @@ textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包�
 ├─AppScope
 ├─doc        # API文档和使用手册存放目录                   
 ├─entry      # 示例代码文件夹                  
-├─textLayoutBuilder4cj    # textLayoutBuilder4cj 库文件夹                   
+├─text-layout-cj    # text-layout-cj 库文件夹                   
 │  └─src
 │      └─main
 │          ├─cangjie
@@ -43,7 +43,7 @@ textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包�
 │          │      ├─text_layout_component.cj   # UI 自定义组件
 │          └─resources
 ├─hvigor  # 构建工具目录
-├─README.md  # textLayoutBuilder4cj 介绍及使用说明   
+├─README.md  # text-layout-cj 介绍及使用说明   
 ```
 ## 接口说明
 
@@ -53,7 +53,7 @@ textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包�
 
 1. 通过 module 引入
     1. 克隆下载项目
-    2. 将 textLayoutBuilder4cj 的模块 textlayoutbuilder 拷贝到应用项目下
+    2. 将 text-layout-cj 的模块 textlayoutbuilder 拷贝到应用项目下
     3. 修改自身应用 entry 下的 oh-package.json5 文件，在 dependencies 字段添加 "textlayoutbuilder": "file:../textlayoutbuilder"
       ```json
       {
@@ -77,19 +77,19 @@ textLayoutBuilder4cj 是一个可定制多种样式的文本构建工具，包�
        ```cangjie
        import textlayoutbuilder.*
        ```
-2. 把 textLayoutBuilder4cj 作为三方库依赖引入
-    1. 目标工程把 textLayoutBuilder4cj 依赖库作为 git submodule 引入
+2. 把 text-layout-cj 作为三方库依赖引入
+    1. 目标工程把 text-layout-cj 依赖库作为 git submodule 引入
 
     ```
     > cd $工程根目录
     > mkdir third-party
     > cd third-party
-    > git submodule add "https://gitcode.com/Cangjie-TPC/textLayoutBuilder4cj.git"
+    > git submodule add "https://gitcode.com/Cangjie-TPC/text-layout-cj.git"
     ```
     2. 修改自身应用 entry/src/main/cangjie 下的 cjpm.toml 文件，添加依赖
     ```toml
     [dependencies]
-        textlayoutbuilder = {path = "../../../../third-party/textLayoutBuilder4cj/textlayoutbuilder/src/main/cangjie", version = "1.0.0"}
+        textlayoutbuilder = {path = "../../../../third-party/text-layout-cj/textlayoutbuilder/src/main/cangjie", version = "1.0.0"}
      ```
     3. 在项目中使用 textlayoutbuilder 组件
        ```cangjie
