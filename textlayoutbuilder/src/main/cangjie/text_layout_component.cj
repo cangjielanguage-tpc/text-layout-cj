@@ -1,6 +1,3 @@
-/*
- * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
- */
 package textlayoutbuilder
 
 import ohos.base.*
@@ -9,7 +6,6 @@ import ohos.state_manage.*
 import ohos.state_macro_manage.*
 import std.regex.*
 import std.collection.{ArrayList}
-import std.math.*
 import ohos.hilog.Hilog
 
 let TEXT_TYPE_NORMAL: String = "normal"
@@ -21,7 +17,7 @@ public class TextLayout {
     @State
     var model: Layout = Layout()
     @State
-    var eventType: EventType = NONE
+    var eventType: EventType = EventType.NONE
 
     func build() {
         Flex() {
@@ -260,14 +256,14 @@ public class TextLayout {
                 textRichText.setTextType(TEXT_TYPE_RICH)
                 textRichText.setText(String(second))
 
-                strArray.append(textNormal1)
-                strArray.append(textRichText)
+                strArray.add(textNormal1)
+                strArray.add(textRichText)
             }
             let textNormal2 = this.creatTextInfo(String(strTemp), TEXT_TYPE_NORMAL)
-            strArray.append(textNormal2)
+            strArray.add(textNormal2)
         } else {
             let textAllNormal = this.creatTextInfo(str, TEXT_TYPE_NORMAL)
-            strArray.append(textAllNormal)
+            strArray.add(textAllNormal)
         }
         return strArray
     }
@@ -290,7 +286,7 @@ public class TextLayout {
         for (j in 0..strArray.size) {
             // 特殊处理的字符段  打上标记 0x001,UI 显示时只要开头带有0x001说明需要特殊处理
             if (strArray[j].getTextType() == TEXT_TYPE_RICH) {
-                bytes.append(strArray[j])
+                bytes.add(strArray[j])
                 continue
             }
             index = strArray[j].getText().indexOf(TEXT_TYPE_HTTP)
@@ -299,9 +295,9 @@ public class TextLayout {
                 var urls: Array<String> = []
                 var matchText: ?Array<MatchData> = reg.matcher(strArray[j].getText()).findAll()
                 if (let Some(text) <- matchText) {
-                    urls = Array<String>(text.size, item: "")
+                    urls = Array<String>(text.size, repeat: "")
                     for (i in 0..text.size) {
-                        urls[i] = text[i].matchStr()
+                        urls[i] = text[i].matchString()
                     }
                 } else {
                     return []
@@ -313,17 +309,17 @@ public class TextLayout {
                     if (let Some(idx) <- index) {
                         tempStr = strArray[j].getText()[0..idx]
                         let textNormal = this.creatTextInfo(tempStr, TEXT_TYPE_NORMAL)
-                        bytes.append(textNormal)
+                        bytes.add(textNormal)
 
                         let textHttp = this.creatTextInfo((urls[i]), TEXT_TYPE_HTTP)
-                        bytes.append(textHttp)
+                        bytes.add(textHttp)
                         strArray[j].setText(strArray[j].getText()[(idx + (urls[i]).size)..(strArray[j].getText().size)])
                     }
                 }
                 let textEndNor = this.creatTextInfo(strArray[j].getText(), TEXT_TYPE_NORMAL)
-                bytes.append(textEndNor)
+                bytes.add(textEndNor)
             } else {
-                bytes.append(strArray[j])
+                bytes.add(strArray[j])
             }
         }
         return bytes.toArray()
