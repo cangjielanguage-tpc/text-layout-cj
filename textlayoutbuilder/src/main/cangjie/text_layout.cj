@@ -86,7 +86,7 @@ public class Layout {
     public func setSpecialTextInfo(specialTextInfo: TextInfo): Layout {
         if (refEq(this.specialTextInfo, specialTextInfo) == false) {
             this.specialTextInfo = specialTextInfo
-            this.specialTextInfoArray.append(this.specialTextInfo)
+            this.specialTextInfoArray.add(this.specialTextInfo)
         }
         return this
     }
